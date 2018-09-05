@@ -1,0 +1,17 @@
+example: 'test'
+complex_example:
+- one
+- two
+- three
+more_complex:
+  sub_complex:
+    - a
+    - b
+    - c
+  add_complex:
+    a: "Ala ma kota"
+    b: "zxczxc"
+    c:
+      - "ala ma zęby"
+      - "mirek ma włosy"
+      - "grażyna ma janusza"

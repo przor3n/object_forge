@@ -1,0 +1,21 @@
+environment:
+  kot: "miau"
+  ryba: "blop"
+  krowa: "muuuu"
+  vet:
+    !!python/object:object_forge.Definition
+    klass: animals.vet.Vet
+    arguments:
+      - "John"
+      - 67
+  vet_help:
+    !!python/object:object_forge.Definition
+    klass: animals.vet.Vet
+    arguments:
+      name: "Mark"
+      age: 67
+  animals_kot:
+    !!python/object:object_forge.Definition
+    klass: animals.animals.Animals
+    arguments:
+      - "@kot"
