@@ -39,9 +39,7 @@ class ReferenceExpression:
             'Call': Call,
         }
 
-    def eeval(self, text, env):
-        print(text)
+    def eval(self, text, env):
         output = self.model.model_from_str(text)
-        print(output)
-        # cls = output.__class__.__name__
-        # return self.tokens.get(cls)(output, env).evaluate()
+        cls = output.__class__.__name__
+        return self.tokens.get(cls)(output, env).evaluate()
