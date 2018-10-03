@@ -44,17 +44,14 @@ class Definition(object):
         :param values: list of arguments with references
         :return: list of arguments
         """
+        self.expr_parser = ReferenceExpression() # TODO: why __init__ doesn't do it?
         logging.info("Expanding references")
         for i, value in enumerate(values):
             value_is_reference = isinstance(value, str) \
                                  and value.startswith(Definition.REFERENCE_PREFIX)
 
             if value_is_reference:
-                print(value)
-                print(self.environment)
-
-                val = self.expr_parser.eeval(value, self.environment)
-                values[i] = val
+                values[i] = self.expr_parser.eval(value, self.environment)
 
         return values
 
