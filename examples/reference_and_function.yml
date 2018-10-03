@@ -1,0 +1,18 @@
+environment:
+  kot: "miau"
+  ryba: "blop"
+  krowa: "muuuu"
+  vet:
+    !!python/object:object_forge.Definition
+    klass: animals.vet.Vet
+    arguments:
+      - "John"
+      - 67
+  farm:
+    !!python/object:object_forge.Definition
+    klass: builtins.dict
+    arguments:
+      krowa: "@animals_krowa"
+      ryba: "@animals_ryba"
+      kot: "@animals_kot"
+      john: "@vet.speak()"
