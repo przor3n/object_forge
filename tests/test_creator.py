@@ -34,6 +34,8 @@ class TestCreator(object):
         assert isinstance(vet, Vet)
         assert vet.speak() == answer
 
+    
+
     def test_creator_adv_objects(self):
         environment = self.create_environment("adv_object.yml")
 
@@ -56,3 +58,10 @@ class TestCreator(object):
 
         for animal in animals:
             assert farm[animal].speak() == environment.get(animal)
+       
+    def test_reference_fold(self):
+        environment = self.create_environment("reference_and_function.yml")
+
+        farm = environment.get('farm')
+
+        assert farm.get('john') == "Hi, I'm John. I'm 67 old"
