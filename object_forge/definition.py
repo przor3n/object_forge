@@ -4,6 +4,8 @@ import logging
 
 from os import path
 
+from object_forge.references import ReferenceExpression
+
 
 class Definition(object):
     """
@@ -12,9 +14,11 @@ class Definition(object):
     """
     REFERENCE_PREFIX="@"
 
-    def __init__(self, klass, arguments):
+    def __init__(self, klass, arguments, calls):
+        self.expr_parser = ReferenceExpression()
         self.klass = klass
         self.arguments = arguments
+        self.calls = calls
         self.environment = dict()
         self.args = None
         self.compiled = None
@@ -44,8 +48,13 @@ class Definition(object):
         for i, value in enumerate(values):
             value_is_reference = isinstance(value, str) \
                                  and value.startswith(Definition.REFERENCE_PREFIX)
+
             if value_is_reference:
-                values[i] = self.environment.get(value[1:])
+                print(value)
+                print(self.environment)
+
+                val = self.expr_parser.eeval(value, self.environment)
+                values[i] = val
 
         return values
 
